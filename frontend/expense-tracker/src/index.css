@@ -17,3 +17,7 @@
     overflow-x: hidden;
   }
 }
+
+.input-box{
+  @apply w-full flex justify-between border-none py-2 px-3 text-black text-sm bg-slate-200 mb-4 mt-3 rounded-xl gap-3 border border-slate-900
+}

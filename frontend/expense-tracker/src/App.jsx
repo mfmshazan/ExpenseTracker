@@ -1,11 +1,12 @@
 import React from 'react'
 
-import{
+import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
-}from "react-router-dom"
+} from "react-router-dom";
+
 import SignUp from './pages/Auth/SignUp'
 import Login from './pages/Auth/Login'
 import Income from './pages/Dashboard/Income'
@@ -16,11 +17,12 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/signup" element={<SignUp/>}/>
-        <Route path="/dashboard" element={<Home/>}/>
-        <Route path="/income" element={<Income/>}/>
-        <Route path="/expense"  element={<Expense/>}/>
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/dashboard" element={<Home />} />
+        <Route path="/income" element={<Income />} />
+        <Route path="/expense" element={<Expense />} />
       </Routes>
     </Router>
   )
@@ -28,14 +30,14 @@ const App = () => {
 
 export default App
 
-const root = ()=> {
+const root = () => {
   //check if tokes available in localhost
   const isAuthenticated = !!localStorage.getItem("token")
 
   //redirect to dashboard if authenticated, otherwise to login
   return isAuthenticated ? (
-    <Navigate to="/dashboard"/>
+    <Navigate to="/dashboard" />
   ) : (
-    <Navigate to="/login"/> 
+    <Navigate to="/login" />
   )
 }
