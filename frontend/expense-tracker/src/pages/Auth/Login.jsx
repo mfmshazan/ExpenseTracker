@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import AuthLayout from '../../components/layouts/AuthLayout'
 import { useNavigate } from 'react-router-dom';
 import Input from '../../components/Inputs/Input';
+import { Link } from 'react-router-dom'
+import { validEmail } from '../../utils/helper';
+
 
 const Login = () => {
 
@@ -12,7 +15,21 @@ const Login = () => {
     const navigate = useNavigate();
 
     //Handle Login form
-    const handleLogin = async (e) => { }
+    const handleLogin = async (e) => { 
+        e.preventDefault();
+
+        if(!validEmail(email)){
+            setError("Please enter a valid email");
+            return;
+        }
+
+        if(!(password)){
+            setError("Please enter the correct password");
+            return;
+        }
+
+        setError("")
+    }
 
     return (
         <AuthLayout>
@@ -37,6 +54,17 @@ const Login = () => {
                     placeholder = "Minimum 8 characters"
                     type = "password"
                 />
+
+                {error && <p className='text-red-500 font.sm pb-3'>{email}</p>}
+
+                <button type='submit' className='btn-primary'>
+                    LOGIN
+                </button>
+            <p className='text-sm'> Don't you have an account ? 
+                <Link to='/signup' className='font-medium text-primary underline ml-2 hover:text-violet-700'>
+                     SignUp
+                </Link>
+                </p>
                 </form>
             </div>
         </AuthLayout>

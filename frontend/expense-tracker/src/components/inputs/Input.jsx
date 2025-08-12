@@ -23,11 +23,13 @@ const Input = ({ value, onChange, placeholder, label, type }) => {
                     {showPassword ? (
                         <FaRegEye
                             size={22}
+                            className='cursor-pointer text-primary'
                             onClick={() => toggleShowPassword()}
                         />
                     ) : (
                         <FaRegEyeSlash
                             size={22}
+                            className='cursor-pointer text-slate-400'
                             onClick={() => toggleShowPassword()}
                         />
                     )}
