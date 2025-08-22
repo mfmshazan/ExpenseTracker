@@ -55,7 +55,7 @@ const Login = () => {
                     type = "password"
                 />
 
-                {error && <p className='text-red-500 font.sm pb-3'>{email}</p>}
+                {error && <p className='text-red-500 font.sm pb-3 text-sm'>{error}</p>}
 
                 <button type='submit' className='btn-primary'>
                     LOGIN
