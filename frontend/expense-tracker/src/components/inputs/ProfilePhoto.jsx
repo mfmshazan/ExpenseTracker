@@ -27,8 +27,7 @@ const ProfilePhoto = ({ image, setImage }) => {
     const onChooseFile = () => {
         inputRef.current.click();
     }
-
-
+    
     return (
         <div className='flex justify-center mb-6'> 
          <input
@@ -38,6 +37,20 @@ const ProfilePhoto = ({ image, setImage }) => {
             onChange = {handleChangeImage}
             className=""
             />
+
+            {!image ? (
+                <div onClick={onChooseFile} className='w-32 h-32 rounded-full bg-size-200 bg-center bg-no-repeat cursor-pointer flex flex-col justify-center items-center border-2 border-dashed border-size-300'>
+                    <LuUpload className='text-size-400 text-3xl' />
+                    <p className='text-size-400 text-xs mt-2'>Upload Photo</p>
+                </div>
+            ) : (
+                <div className='relative'>
+                    <img src={previewUrl ? previewUrl : URL.createObjectURL(image)} alt="Profile" className='w-32 h-32 rounded-full object-cover' />
+                    <div onClick={handleRemoveImage} className='absolute bottom-0 right-0 bg-white p-1 rounded-full cursor-pointer'>
+                        <LuTrash className='text-red-500' />
+                    </div>
+                </div>
+            )}
         </div>
 
     )
