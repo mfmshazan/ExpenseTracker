@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { LuUser, LuUpload, LuTrash} from 'react-icons/lu'
+import { LuUser, LuUpload, LuTrash } from 'react-icons/lu'
 
 const ProfilePhoto = ({ image, setImage }) => {
 
@@ -27,29 +27,47 @@ const ProfilePhoto = ({ image, setImage }) => {
     const onChooseFile = () => {
         inputRef.current.click();
     }
-    
+
     return (
-        <div className='flex justify-center mb-6'> 
-         <input
-            type="file"
-            accept = 'image/*'
-            ref= {inputRef}
-            onChange = {handleChangeImage}
-            className=""
+        <div className='flex justify-center mb-6'>
+            <input
+                type="file"
+                accept='image/*'
+                ref={inputRef}
+                onChange={handleChangeImage}
+                className="hidden"
             />
 
             {!image ? (
-                <div onClick={onChooseFile} className='w-32 h-32 rounded-full bg-size-200 bg-center bg-no-repeat cursor-pointer flex flex-col justify-center items-center border-2 border-dashed border-size-300'>
-                    <LuUpload className='text-size-400 text-3xl' />
-                    <p className='text-size-400 text-xs mt-2'>Upload Photo</p>
+                <div className='w-20 h-20 flex items-center justify-center bg-purple-100 rounded-full relative cursor-pointer'>
+                    <LuUser className='text-4xl text-primary' />
+
+                    <button
+                        type='button'
+                        className="w-6 h-6 flex items-center justify-center bg-primary text-white rounded-full absolute -right-0 -bottom-0"
+                        onClick={onChooseFile}
+                    >
+                        <LuUpload/>
+                    </button>
                 </div>
-            ) : (
-                <div className='relative'>
-                    <img src={previewUrl ? previewUrl : URL.createObjectURL(image)} alt="Profile" className='w-32 h-32 rounded-full object-cover' />
-                    <div onClick={handleRemoveImage} className='absolute bottom-0 right-0 bg-white p-1 rounded-full cursor-pointer'>
-                        <LuTrash className='text-red-500' />
-                    </div>
+            ) : (<div>
+                <img
+                    src={previewUrl}
+                    alt="Profile Photo"
+                    className='w-20 h-20 rounded-full object-cover mb-4'
+                />
+                <div>
+                    <button
+                        type='button'
+                        className="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full absolute -right-1 -bottom-1"
+                        onClick={handleRemoveImage}
+                    >
+                        <LuTrash className='text-gray-400 text-3xl' />
+                    </button>
                 </div>
+            </div>
+
+
             )}
         </div>
 
