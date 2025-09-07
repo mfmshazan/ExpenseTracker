@@ -47,30 +47,26 @@ const ProfilePhoto = ({ image, setImage }) => {
                         className="w-6 h-6 flex items-center justify-center bg-primary text-white rounded-full absolute -right-0 -bottom-0"
                         onClick={onChooseFile}
                     >
-                        <LuUpload/>
+                        <LuUpload />
                     </button>
                 </div>
-            ) : (<div>
+            ) : (<div className='relative'>
                 <img
                     src={previewUrl}
                     alt="Profile Photo"
                     className='w-20 h-20 rounded-full object-cover mb-4'
                 />
-                <div>
-                    <button
-                        type='button'
-                        className="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full absolute -right-1 -bottom-1"
-                        onClick={handleRemoveImage}
-                    >
-                        <LuTrash className='text-gray-400 text-3xl' />
-                    </button>
-                </div>
+
+                <button
+                    type='button'
+                    className="w-8 h-8 flex items-center justify-center bg-red-700 text-white rounded-full absolute -right-2 bottom-1"
+                    onClick={handleRemoveImage}
+                >
+                    <LuTrash />
+                </button>
             </div>
-
-
             )}
         </div>
-
     )
 }
 

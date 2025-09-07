@@ -7,7 +7,7 @@ import { validEmail } from '../../utils/helper';
 
 
 const Login = () => {
-
+    
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [error, setError] = useState(null);
@@ -18,6 +18,7 @@ const Login = () => {
     const handleLogin = async (e) => { 
         e.preventDefault();
 
+        if(!ful)
         if(!validEmail(email)){
             setError("Please enter a valid email");
             return;
